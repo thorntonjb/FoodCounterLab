@@ -67,6 +67,11 @@ public class ThorntonJohnBusinessDriver
 
         System.out.print("How many items would you like to order? ");
         String customerInput = console.nextLine();
+        if (customerInput.equalsIgnoreCase("x") || customerInput.trim().equals(""))
+        {
+            System.out.println("UNDERSTANDABLE, HAVE A NICE DAY ✌️");
+            System.exit(0);
+        }
         int numberOfItems = Integer.parseInt(customerInput);
 
         String[] orderedItems = new String[numberOfItems];
@@ -78,20 +83,30 @@ public class ThorntonJohnBusinessDriver
                 System.out.print("Would you still like to order " + numberOfItems + " things? (y/n) ");
                 String customerDecision = console.nextLine();
                 if (customerDecision.equalsIgnoreCase("n")) { break; }
-            }
+            } // end if
+
             System.out.print("Which item would you like? Please give the number: ");
             customerInput = console.nextLine();
             orderNumber = Integer.parseInt(customerInput);
-            if (orderNumber < 8)
+
+            if (customerInput.equalsIgnoreCase("x") || customerInput.trim().equals(""))
             {
-                orderedItems[counter] = entreeMenuItems[orderNumber - 1];
-                // System.out.println(orderedItems[counter]);
-            }
-            else
-            {
-                orderedItems[counter] = dessertMenuItems[orderNumber - 8];
-                // System.out.println(orderedItems[counter]);
-            }
+                System.out.println("UNDERSTANDABLE, HAVE A NICE DAY ✌️");
+                System.exit(0);
+            } // end if
+
+            if (orderNumber < 8 && orderNumber > 0) { orderedItems[counter] = entreeMenuItems[orderNumber - 1]; }
+            else if (orderNumber >= 8 && orderNumber < 11) { orderedItems[counter] = dessertMenuItems[orderNumber - 8]; }
+            else 
+            { 
+                while (orderNumber > 11 || orderNumber < 0)
+                {
+                    System.out.println("Your entry is invalid. "); 
+                    System.out.print("Please give a valid number: ");
+                    customerInput = console.nextLine();
+                    orderNumber = Integer.parseInt(customerInput);
+                }
+            } // end if
 
             Thread.sleep(500);
             System.out.println("Order of '" + orderedItems[counter] + "' added to cart.");
