@@ -41,11 +41,25 @@ public class ThorntonJohnBusinessDriver
         System.out.println(welcome);
         System.out.print("I'm " + ownerName + ", what's your name? ");
         customerName = console.nextLine();
-        String greeting = "What's up, " + customerName + "!";
+        String greeting = "What's up, " + customerName + "! Take a look at our menu.";
         System.out.println(greeting);
 
-        System.out.println(decorativeLine);
+        String[] entreeMenuItems = {"Soft Drink", "Hallacas", "Pabellon (Bowl or Taco)", "Empanadas", "Arepas", "Pasteles", "Venezuelan Hot Dog"};
+        String[] dessertMenuItems = {"Cocosette", "Guava and Cheese Empanada", "Nutella Tequeño"};
+
+        System.out.println("\nEntree Menu: ");
+        for (int counter = 0; counter < entreeMenuItems.length; counter++)
+        {
+            System.out.println((counter + 1) + ") " + entreeMenuItems[counter]);
+        }
+
+        System.out.println("\nDessert Menu:");
+        for (int counter = 0; counter < dessertMenuItems.length; counter++)
+        {
+            System.out.println((counter + 1) + ") " + dessertMenuItems[counter]);
+        }
         
+        System.out.println(decorativeLine);
 
         console.close();
     }
