@@ -26,7 +26,7 @@ import java.util.*;
 
 public class ThorntonJohnBusinessDriver
 {
-    public static void main(String[] args)
+    public static void main(String[] args) throws InterruptedException
     {
         Scanner console = new Scanner(System.in);
         
@@ -44,23 +44,62 @@ public class ThorntonJohnBusinessDriver
         String greeting = "What's up, " + customerName + "! Take a look at our menu.";
         System.out.println(greeting);
 
-        String[] entreeMenuItems = {"Soft Drink", "Hallacas", "Pabellon (Bowl or Taco)", "Empanadas", "Arepas", "Pasteles", "Venezuelan Hot Dog"};
+        String[] entreeMenuItems = {"Soft Drink", "Hallacas", "Pabellon", "Empanadas", "Arepas", "Pasteles", "Venezuelan Hot Dog"};
         String[] dessertMenuItems = {"Cocosette", "Guava and Cheese Empanada", "Nutella Tequeño"};
-
+        int orderNumber = 0;
+        
         System.out.println("\nEntree Menu: ");
-        for (int counter = 0; counter < entreeMenuItems.length; counter++)
+        while(orderNumber < entreeMenuItems.length)
         {
-            System.out.println((counter + 1) + ") " + entreeMenuItems[counter]);
-        }
+            System.out.println((orderNumber + 1) + ") " + entreeMenuItems[orderNumber]);
+            orderNumber++;
+        } // end while loop
 
+        orderNumber = 0;
         System.out.println("\nDessert Menu:");
-        for (int counter = 0; counter < dessertMenuItems.length; counter++)
+        while(orderNumber < dessertMenuItems.length)
         {
-            System.out.println((counter + 1) + ") " + dessertMenuItems[counter]);
-        }
+            System.out.println((orderNumber + 8) + ") " + dessertMenuItems[orderNumber]);
+            orderNumber++;
+        } // end while loop
         
         System.out.println(decorativeLine);
 
+        System.out.print("How many items would you like to order? ");
+        String customerInput = console.nextLine();
+        int numberOfItems = Integer.parseInt(customerInput);
+
+        String[] orderedItems = new String[numberOfItems];
+        String order = ""; 
+        for (int counter = 0; counter < orderedItems.length; counter++)
+        {
+            System.out.print("Which item would you like? Please give the number: ");
+            customerInput = console.nextLine();
+            orderNumber = Integer.parseInt(customerInput);
+            if (orderNumber < 8)
+            {
+                orderedItems[counter] = entreeMenuItems[orderNumber - 1];
+                // System.out.println(orderedItems[counter]);
+            }
+            else
+            {
+                orderedItems[counter] = dessertMenuItems[orderNumber - 8];
+                // System.out.println(orderedItems[counter]);
+            }
+
+            Thread.sleep(500);
+            System.out.println("Order of '" + orderedItems[counter] + "' added to cart.");
+            order = order + "\n" + (counter + 1) + ") " + orderedItems[counter];
+            
+        }
+        System.out.println(decorativeLine);
+        
+        System.out.println("\nProcessing list of your order... thank you, " + customerName +"!\n");
+        Thread.sleep(1000);
+        System.out.println(customerName + "'s order: \n" + order); 
+
+        System.out.println("Your order will be ready shortly. Have a wonderful day!");       
+
         console.close();
-    }
-}
+    } // end main()
+} // end class
