@@ -73,6 +73,12 @@ public class ThorntonJohnBusinessDriver
         String order = ""; 
         for (int counter = 0; counter < orderedItems.length; counter++)
         {
+            if (counter >= 1)
+            {
+                System.out.print("Would you still like to order " + numberOfItems + " things? (y/n) ");
+                String customerDecision = console.nextLine();
+                if (customerDecision.equalsIgnoreCase("n")) { break; }
+            }
             System.out.print("Which item would you like? Please give the number: ");
             customerInput = console.nextLine();
             orderNumber = Integer.parseInt(customerInput);
@@ -93,12 +99,12 @@ public class ThorntonJohnBusinessDriver
             
         }
         System.out.println(decorativeLine);
-        
+
         System.out.println("\nProcessing list of your order... thank you, " + customerName +"!\n");
         Thread.sleep(1000);
         System.out.println(customerName + "'s order: \n" + order); 
 
-        System.out.println("Your order will be ready shortly. Have a wonderful day!");       
+        System.out.println("Order will be ready shortly. Have a wonderful day!");       
 
         console.close();
     } // end main()
