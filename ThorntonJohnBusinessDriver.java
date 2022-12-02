@@ -44,22 +44,21 @@ public class ThorntonJohnBusinessDriver
         String greeting = "What's up, " + customerName + "! Take a look at our menu.";
         System.out.println(greeting);
 
-        String[] entreeMenuItems = {"Soft Drink", "Hallacas", "Pabellon", "Empanadas", "Arepas", "Pasteles", "Venezuelan Hot Dog"};
-        String[] dessertMenuItems = {"Cocosette", "Guava and Cheese Empanada", "Nutella Tequeño"};
+        String[] menuItems = {"Soft Drink", "Hallacas", "Pabellon", "Empanadas", "Arepas", 
+                            "Pasteles", "Venezuelan Hot Dog", "Cocosette", 
+                            "Guava and Cheese Empanada", "Nutella Tequeño"};
         int orderNumber = 0;
-        
-        System.out.println("\nEntree Menu: ");
-        while(orderNumber < entreeMenuItems.length)
-        {
-            System.out.println((orderNumber + 1) + ") " + entreeMenuItems[orderNumber]);
-            orderNumber++;
-        } // end while loop
 
-        orderNumber = 0;
-        System.out.println("\nDessert Menu:");
-        while(orderNumber < dessertMenuItems.length)
+        System.out.println("\nEntree Menu: ");
+        while(orderNumber < menuItems.length)
         {
-            System.out.println((orderNumber + 8) + ") " + dessertMenuItems[orderNumber]);
+            System.out.println((orderNumber + 1) + ") " + menuItems[orderNumber]);
+        
+            if (orderNumber == 6)
+            {
+                System.out.println("Dessert Menu: ");
+            }
+            
             orderNumber++;
         } // end while loop
         
@@ -95,8 +94,7 @@ public class ThorntonJohnBusinessDriver
                 System.exit(0);
             } // end if
 
-            if (orderNumber < 8 && orderNumber > 0) { orderedItems[counter] = entreeMenuItems[orderNumber - 1]; }
-            else if (orderNumber >= 8 && orderNumber < 11) { orderedItems[counter] = dessertMenuItems[orderNumber - 8]; }
+            if (orderNumber < menuItems.length && orderNumber > 0) { orderedItems[counter] = menuItems[orderNumber - 1]; }
             else 
             { 
                 while (orderNumber > 11 || orderNumber < 0)
