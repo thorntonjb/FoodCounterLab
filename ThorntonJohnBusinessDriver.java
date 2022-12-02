@@ -44,8 +44,8 @@ public class ThorntonJohnBusinessDriver
         String greeting = "What's up, " + customerName + "! Take a look at our menu.";
         System.out.println(greeting);
 
-        String[] menuItems = {"Soft Drink", "Hallacas", "Pabellon", "Empanadas", "Arepas", 
-                            "Pasteles", "Venezuelan Hot Dog", "Cocosette", 
+        String[] menuItems = {"Soft Drink", "Hallaca", "Pabellon", "Empanada", "Arepa", 
+                            "Pastele", "Venezuelan Hot Dog", "Cocosette", 
                             "Guava and Cheese Empanada", "Nutella Tequeño"};
         int orderNumber = 0;
 
@@ -53,7 +53,6 @@ public class ThorntonJohnBusinessDriver
         while(orderNumber < menuItems.length)
         {
             System.out.println((orderNumber + 1) + ") " + menuItems[orderNumber]);
-        
             if (orderNumber == 6)
             {
                 System.out.println("Dessert Menu: ");
@@ -104,6 +103,7 @@ public class ThorntonJohnBusinessDriver
                     customerInput = console.nextLine();
                     orderNumber = Integer.parseInt(customerInput);
                 }
+                orderedItems[counter] = menuItems[orderNumber - 1];
             } // end if
 
             Thread.sleep(500);
